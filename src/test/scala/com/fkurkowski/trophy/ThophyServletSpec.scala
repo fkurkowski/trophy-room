@@ -8,7 +8,7 @@ class ThophyServletSpec extends ScalatraSpec { def is =
     "should return status 200"                  ! root200^
                                                 end
 
-  addServlet(classOf[ThophyServlet], "/*")
+  addServlet(classOf[TrophyServlet], "/*")
 
   def root200 = get("/") {
     status must_== 200
