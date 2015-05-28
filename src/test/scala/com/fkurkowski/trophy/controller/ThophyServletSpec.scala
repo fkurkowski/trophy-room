@@ -1,4 +1,4 @@
-package com.fkurkowski.trophy
+package com.fkurkowski.trophy.controller
 
 import org.scalatra.test.specs2._
 

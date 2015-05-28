@@ -1,7 +1,4 @@
-package com.fkurkowski.trophy
-
-import org.scalatra._
-import scalate.ScalateSupport
+package com.fkurkowski.trophy.controller
 
 class TrophyServlet extends TrophyRoomStack {
 

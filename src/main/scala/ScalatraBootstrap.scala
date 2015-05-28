@@ -1,4 +1,4 @@
-import com.fkurkowski.trophy._
+import com.fkurkowski.trophy.controller.TrophyServlet
 import org.scalatra._
 import javax.servlet.ServletContext
 
