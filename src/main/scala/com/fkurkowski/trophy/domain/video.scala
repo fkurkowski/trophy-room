@@ -3,18 +3,16 @@ package com.fkurkowski.trophy.domain
 /**
  * @author fkurkowski.
  */
-case class Video(id: Long, idOnProvider: String, provider: Provider) {
+case class Video(id: Long, providerId: Long, videoIdOnProvider: String) {
 
   /**
    * Returns an embeddable URL
    * @return
    */
-  def url: String = provider match {
-    case YouTube => s"https://www.youtube.com/embed/$idOnProvider?showinfo=0"
-    case Dailymotion => s"https://www.dailymotion.com/embed/video/$idOnProvider"
+  def url: String = providerId match {
+    case 1L => s"https://www.youtube.com/embed/$videoIdOnProvider?showinfo=0"
+    case 2L => s"https://www.dailymotion.com/embed/video/$videoIdOnProvider"
   }
 }
 
-sealed abstract class Provider
-case object YouTube extends Provider
-case object Dailymotion extends Provider
+case class Provider(id: Long, name: String)

@@ -8,10 +8,10 @@ import java.util.Random
  */
 object VideoStore {
   private[this] val videos = List(
-    Video(1L, "-0ZpuLVjD-Q", YouTube),
-    Video(1L, "cnUAilkXYoM", YouTube),
-    Video(1L, "lP88iRPAcz4", YouTube),
-    Video(1L, "x2ro8p7", Dailymotion)
+    Video(1L, 1L, "-0ZpuLVjD-Q"),
+    Video(1L, 1L, "cnUAilkXYoM"),
+    Video(1L, 1L, "lP88iRPAcz4"),
+    Video(1L, 2L, "x2ro8p7")
   )
 
   private val randomGenerator  = new Random()
