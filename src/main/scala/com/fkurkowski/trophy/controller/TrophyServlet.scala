@@ -17,12 +17,8 @@ class TrophyServlet(db: Database) extends TrophyRoomStack with FutureSupport {
 
   get("/") {
     new AsyncResult() {
-      /**
-       * TODO: optimize this
-       */
-      val is = db.run(videos.result) map { v =>
-        val idx = Random.nextInt(v.size)
-        mustache("index", "video" -> v(idx))
+      val is = db.run(videos.findRandom.result) map { v =>
+        mustache("index", "video" -> v)
       }
     }
   }

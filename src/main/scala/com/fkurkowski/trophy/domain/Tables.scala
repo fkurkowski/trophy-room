@@ -1,10 +1,17 @@
 package com.fkurkowski.trophy.domain
 
 import slick.driver.H2Driver.api._
+
+import scala.util.Random
+
 /**
  * @author fkurkowski.
  */
 object Tables {
+  /**
+   * H2's RAND function
+   */
+  private val rand = SimpleFunction.nullary[Double]("rand")
 
   class Providers(tag: Tag) extends Table[Provider](tag, "PROVIDERS") {
     def id = column[Long]("PROVIDER_ID", O.PrimaryKey)
@@ -24,7 +31,11 @@ object Tables {
     def provider = foreignKey("PROVIDER_FK", providerId, providers)(_.id)
   }
 
-  val videos = TableQuery[Videos]
+  object videos extends TableQuery(new Videos(_)) {
+    val findRandom = for {
+      v <- this.map(v => (v, rand)).sortBy(_._2).take(1)
+    } yield v._1
+  }
 
   val setup = DBIO.seq(
     (providers.schema ++ videos.schema).create,
